@@ -2,12 +2,20 @@
   "R5": 
   {
     "IPaddr": "127.0.0.1",
-    "port": 5000,
+    "port": 5001,
     "interfaces": 
     [
       {
         "interfaceName": " FastEthernet0/0",
-        "IPv4":["192.168.10.100","255.255.255.0"]
+        "IPv4":["192.168.1.2","255.255.255.0"]
+      }
+    ],
+    "BGP":
+    [
+      {
+        "ASN":1,
+        "remoteASN":1,
+        "neighborIP":"192.168.1.1"
       }
     ]
   }

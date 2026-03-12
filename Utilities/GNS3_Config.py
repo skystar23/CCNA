@@ -3,23 +3,17 @@ from Utilities.Cisco_Commands import Configuration
 from Utilities.Driver_selenium import json_reading
 from Utilities.Readconfigurations import Readconfigurations
 
-filename = "Deviceinfo"
-pageobj = Readconfigurations(filename)
-
-def router_config(conf):
-
+def router_config1(conf):
     for routerName, routerConf in conf.items():
         print(f"routerName: {routerName}, routerConf: {routerConf}")
-
         if routerName != 'VPC':
             if routerName != "WiZNG-M":
                 if isinstance(routerConf, dict):
                     routerManagementAddr = routerConf.get("IPaddr")
+                    print(routerManagementAddr)
                     routerManagementPort = routerConf.get("port")
                 else:
-                    #print(f"Error: {routerName} configuration is not a dictionary, but a {type(routerConf)}")
                     continue
-
                 if not routerManagementAddr or not routerManagementPort:
                     print(f"Missing IP address or port for {routerName}, skipping.")
                     continue
@@ -109,7 +103,6 @@ def router_config(conf):
             for pc, pcconfig in routerConf.items():
                 pcManagementAddr = pcconfig.get("IPaddr")
                 pcManagementPort = pcconfig.get("port")
-
                 if not pcManagementAddr or not pcManagementPort:
                     print(f"Missing IP address or port for {pc}, skipping.")
                     continue

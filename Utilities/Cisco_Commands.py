@@ -110,8 +110,8 @@ class Configuration:
         self.configureTerminal()
         for bgp in bgp_routing:
             print(bgp)
-            self.sendCommand(f"router bgp {bgp[0]}")
-            self.sendCommand(f"neighbor {bgp[1]} remote-as {bgp[2]}")
+            self.sendCommand(f"router bgp {bgp['ASN']}")
+            self.sendCommand(f"neighbor {bgp['neighborIP']} remote-as {bgp['remoteASN']}")
             if len(bgp) >= 4:
                 self.sendCommand(f"neighbor {bgp[1]} ebgp-multihop {bgp[3]}")
             if network != None:
@@ -123,8 +123,8 @@ class Configuration:
         self.configureTerminal()
         for bgp in bgp_auth:
             print(bgp)
-            self.sendCommand(f"router bgp {bgp[0]}")
-            self.sendCommand(f"neighbor {bgp[1]} remote-as {bgp[2]}")
+            self.sendCommand(f"router bgp {bgp['ASN']}")
+            self.sendCommand(f"neighbor {bgp['neighborIP']} remote-as {bgp['remoteASN1']}")
             self.sendCommand(f"neighbor {bgp[1]} password {bgp[3]}")
             if len(bgp) >=5 and "passive" in bgp:
                 self.sendCommand(f"neighbor {bgp[1]} transport connection-mode {bgp[4]}")
