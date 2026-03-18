@@ -111,12 +111,15 @@ class Configuration:
         for bgp in bgp_routing:
             print(bgp)
             self.sendCommand(f"router bgp {bgp['ASN']}")
-            self.sendCommand(f"neighbor {bgp['neighborIP']} remote-as {bgp['remoteASN']}")
-            if len(bgp) >= 4:
-                self.sendCommand(f"neighbor {bgp[1]} ebgp-multihop {bgp[3]}")
+            # self.sendCommand(f"neighbor {bgp['neighborIP']} remote-as {bgp['remoteASN']}")
+            # if len(bgp) >= 4:
+            #     self.sendCommand(f"neighbor {bgp[1]} ebgp-multihop {bgp[3]}")
+            if "next-hop-self" in bgp.keys():        
+                self.sendCommand(f"neighbor {bgp['next-hop-self']} next-hop-self")
             if network != None:
                 for ip in network:
                     self.sendCommand(f"network {ip[0]} mask {ip[1]}")
+           
 
     def setbgp_authentication(self, bgp_auth,network = None):
         print(f"{self.name} : set bgp Routing \n")

@@ -4,6 +4,7 @@ from Utilities.Driver_selenium import json_reading
 from Utilities.Readconfigurations import Readconfigurations
 
 def router_config1(conf):
+    # print(conf)
     for routerName, routerConf in conf.items():
         print(f"routerName: {routerName}, routerConf: {routerConf}")
         if routerName != 'VPC':
@@ -60,7 +61,9 @@ def router_config1(conf):
                     else:
                         config.setbgp_authentication(routerConf["BGP_authentication"])
 
-
+                if "BGP" in routerConf:
+                    if "next-hop-self" in routerConf:
+                        config.se
                 if "BGP6" in routerConf:
                     config.activeIPv6()
                     if "BGP6_Network" in routerConf:

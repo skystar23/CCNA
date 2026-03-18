@@ -1,5 +1,73 @@
 {
-  "R5": 
+  "R1": 
+  {
+    "IPaddr": "127.0.0.1",
+    "port": 4999,
+    "interfaces": 
+    [
+      {
+        "interfaceName": " FastEthernet0/0",
+        "IPv4":["192.168.11.1","255.255.255.0"]
+      },
+      {
+        "interfaceName": " FastEthernet1/0",
+        "IPv4":["192.168.1.1","255.255.255.0"]
+      }
+    ],
+    "BGP":
+    [
+      {
+        "ASN":1,
+        "remoteASN":2,
+        "neighborIP":"192.168.11.2"
+      }
+    ],
+    "BGP_Network":[
+      ["192.168.1.0","255.255.255.0"]
+    ]
+  },
+  "R2": 
+  {
+    "IPaddr": "127.0.0.1",
+    "port": 5000,
+    "interfaces": 
+    [
+      {
+        "interfaceName": " FastEthernet0/0",
+        "IPv4":["192.168.11.2","255.255.255.0"]
+      },
+      {
+        "interfaceName": " FastEthernet1/0",
+        "IPv4":["192.168.12.1","255.255.255.0"]
+      },
+      {
+        "interfaceName": " FastEthernet1/1",
+        "IPv4":["192.168.15.1","255.255.255.0"]
+      }
+    ],
+    "BGP":
+    [
+      {
+        "ASN":2,
+        "remoteASN":1,
+        "neighborIP":"192.168.11.1"
+      },
+      {
+        "ASN":2,
+        "remoteASN":2,
+        "neighborIP":"192.168.12.2",
+        "next-hop-self":"192.168.12.2"
+
+      },
+      {
+        "ASN":2,
+        "remoteASN":2,
+        "neighborIP":"192.168.15.2",
+        "next-hop-self":"192.168.15.2"
+      }
+    ]
+  },
+  "R3": 
   {
     "IPaddr": "127.0.0.1",
     "port": 5001,
@@ -7,16 +75,110 @@
     [
       {
         "interfaceName": " FastEthernet0/0",
-        "IPv4":["192.168.1.2","255.255.255.0"]
+        "IPv4":["192.168.12.2","255.255.255.0"]
+      },
+      {
+        "interfaceName": " FastEthernet1/0",
+        "IPv4":["192.168.13.1","255.255.255.0"]
       }
     ],
     "BGP":
     [
       {
-        "ASN":1,
-        "remoteASN":1,
-        "neighborIP":"192.168.1.1"
+        "ASN":2,
+        "remoteASN":2,
+        "neighborIP":"192.168.12.1",
+        "next-hop-self":"192.168.12.1"
+      },
+      {
+        "ASN":2,
+        "remoteASN":2,
+        "neighborIP":"192.168.13.2",
+        "next-hop-self":"192.168.13.2"
       }
     ]
-  }
+  },
+  "R4": 
+  {
+    "IPaddr": "127.0.0.1",
+    "port": 5002,
+    "interfaces": 
+    [
+      {
+        "interfaceName": " FastEthernet0/0",
+        "IPv4":["192.168.13.2","255.255.255.0"]
+      },
+      {
+        "interfaceName": " FastEthernet1/0",
+        "IPv4":["192.168.14.1","255.255.255.0"]
+      },
+      {
+        "interfaceName": " FastEthernet1/1",
+        "IPv4":["192.168.15.2","255.255.255.0"]
+      }
+    ],
+    "BGP":
+    [
+      {
+        "ASN":2,
+        "remoteASN":2,
+        "neighborIP":"192.168.13.1",
+        "next-hop-self":"192.168.13.1"
+      },
+      {
+        "ASN":2,
+        "remoteASN":3,
+        "neighborIP":"192.168.14.2"
+      },
+      {
+        "ASN":2,
+        "remoteASN":2,
+        "neighborIP":"192.168.15.1",
+        "next-hop-self":"192.168.15.1"
+      }
+    ]
+  },
+  "R5": 
+  {
+    "IPaddr": "127.0.0.1",
+    "port": 5003,
+    "interfaces": 
+    [
+      {
+        "interfaceName": " FastEthernet0/0",
+        "IPv4":["192.168.14.2","255.255.255.0"]
+      },
+      {
+        "interfaceName": " FastEthernet1/0",
+        "IPv4":["192.168.2.1","255.255.255.0"]
+      }
+    ],
+    "BGP":
+    [
+      {
+        "ASN":3,
+        "remoteASN":2,
+        "neighborIP":"192.168.14.1"
+      }
+    ],
+    "BGP_Network":[
+      ["192.168.2.0","255.255.255.0"]
+    ]    
+  },
+  "VPC": {
+      "PC1": {
+        "IPaddr": "127.0.0.1",
+        "port": 5005,
+        "IPv4": "192.168.2.10",
+        "mask": "255.255.255.0",
+        "gateway": "192.168.2.1"
+      }, 
+      "PC2": {
+        "IPaddr": "127.0.0.1",
+        "port": 5004,
+        "IPv4": "192.168.1.10",
+        "mask": "255.255.255.0",
+        "gateway": "192.168.1.1"
+      }
+    }
 }
