@@ -7,7 +7,6 @@ from Utilities.GNS3_Config import router_config1
 class First:
     def project_setup_teardown(self, projectname):
         self.project = GNS3Project(project_name=projectname)
-        print("HI")
 
     def config(self):
         self.project_setup_teardown('BGP_1')
