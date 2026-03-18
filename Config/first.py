@@ -13,9 +13,7 @@ class First:
         self.project.start()          
         gns3_info = json_reading('./GNS3_data/ip_address_config.json')
         router_config(gns3_info)
-        # gns3_info1=json_reading('./GNS3_data/IBGP_CONFIG.json')
-        # router_config1(gns3_info1)
-
+        
 if __name__ == "__main__":
     f = First()         
     f.config()           
